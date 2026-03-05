@@ -1,0 +1,11 @@
+*.out
+*.exe
+*.app
+*.bin
+
+.vscode/
+.idea/
+
+build/
+cmake-build-*/
+bin/
