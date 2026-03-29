@@ -64,6 +64,7 @@ int main(int argc, char* argv[]) {
             cin >> a;
             cin >> b;
             cout << getStrDiff(a, b);
+            return 0;
         }
     }
     return RUN_ALL_TESTS();

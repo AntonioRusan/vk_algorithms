@@ -78,6 +78,7 @@ int main(int argc, char *argv[])
             int n;
             cin >> n;
             cout << findSquareRoot(n) << endl;
+            return 0;
         }
     }
     return RUN_ALL_TESTS();

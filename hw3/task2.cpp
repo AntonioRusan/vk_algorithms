@@ -51,6 +51,7 @@ int main(int argc, char* argv[]) {
             int x, y, n;
             cin >> x >> y >> n;
             cout << minTime(x, y, n) << endl;
+            return 0;
         }
     }
     return RUN_ALL_TESTS();

@@ -11,7 +11,7 @@ vector <int> getSumPair(vector<int> arr, int target) {
             sumMap[arr[i]]++;
         }
         else {
-            sumMap.insert({arr[i], 0});
+            sumMap.insert({arr[i], 1});
         }
     }
     vector <int> pairRes;
@@ -56,6 +56,21 @@ int main(int argc, char* argv[]) {
     ::testing::InitGoogleTest(&argc, argv);
     for (int i = 1; i < argc; i++) {
         if (string(argv[i]) == "--run") {
+            int n, target;
+            cin >> n >> target;
+            vector <int> arr(n);
+            for (int i = 0; i < n; i++) {
+                cin >> arr[i];
+            }
+            vector <int> res = getSumPair(arr, target);
+            if (res.empty()) {
+                cout << "No pair" << endl;
+            }
+            else 
+            {
+                cout << res[0] << " " << res[1] << endl;
+            }
+            return 0;
         }
     }
     return RUN_ALL_TESTS();
