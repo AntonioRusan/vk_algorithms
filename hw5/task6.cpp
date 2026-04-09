@@ -149,28 +149,32 @@ struct Tree
     }
 };
 
-TEST(MirrorTreeTest, EmptyTree) {
+TEST(MirrorTreeTest, EmptyTree)
+{
     vector<int> arr = {};
     Tree t(arr);
     t.mirrorTree(t.root);
     EXPECT_TRUE(t.toVector().empty());
 }
 
-TEST(MirrorTreeTest, SingleNode) {
+TEST(MirrorTreeTest, SingleNode)
+{
     vector<int> arr = {42};
     Tree t(arr);
     t.mirrorTree(t.root);
     EXPECT_EQ(t.toVector(), (vector<int>{42}));
 }
 
-TEST(MirrorTreeTest, SimpleSwap) {
+TEST(MirrorTreeTest, SimpleSwap)
+{
     vector<int> arr = {1, 2, 3};
     Tree t(arr);
     t.mirrorTree(t.root);
     EXPECT_EQ(t.toVector(), (vector<int>{1, 3, 2}));
 }
 
-TEST(MirrorTreeTest, FullBinaryTree) {
+TEST(MirrorTreeTest, FullBinaryTree)
+{
     vector<int> arr = {1, 2, 3, 4, 5, 6, 7};
     Tree t(arr);
     t.mirrorTree(t.root);
@@ -190,7 +194,7 @@ int main(int argc, char *argv[])
                 cin >> arr[j];
 
             Tree t = Tree(arr);
-            t.print(); 
+            t.print();
             t.mirrorTree(t.root);
             t.print();
             return 0;
