@@ -105,28 +105,29 @@ struct Tree
         dfs(node->right, res);
         return res;
     }
+    bool isMirror(Node *left, Node *right) const
+    {
+        if (!left && !right)
+            return true;
+        if (!left || !right)
+            return false;
+        if (left->val != right->val)
+            return false;
+
+        return isMirror(left->left, right->right) &&
+               isMirror(left->right, right->left);
+    }
     bool isSymmetric()
     {
-        if (root == nullptr)
-            return false;
-        vector<int> res;
-        res = dfs(root, res);
-        int j = res.size() - 1;
-        for (int i = 0; i < res.size() / 2; i++)
-        {
-            if (res[i] != res[j])
-            {
-                return false;
-            }
-            j--;
-        }
-        return true;
+        if (!root)
+            return true;
+        return isMirror(root->left, root->right);
     }
 };
 TEST(SymmetricTreeTest, EmptyAndSingleNode)
 {
     vector<int> input = {42};
-    EXPECT_FALSE(Tree({}).isSymmetric());
+    EXPECT_TRUE(Tree({}).isSymmetric());
     EXPECT_TRUE(Tree(input).isSymmetric());
 }
 
@@ -146,15 +147,20 @@ TEST(SymmetricTreeTest, ComplexSymmetric)
 
 TEST(SymmetricTreeTest, AsymmetricValues)
 {
-    vector<int> input = {1, 2, 2, 3, 4, 3};
-    Tree t(input);
+    Tree t;
+    t.root = new Node(1);
+    t.root->left = new Node(2);
+    t.root->right = new Node(2);
+    t.root->left->left = new Node(3);
+    t.root->right->left = new Node(4);
+    t.root->right->right = new Node(3);
     EXPECT_FALSE(t.isSymmetric());
 }
-
-TEST(SymmetricTreeTest, AsymmetricStructure)
-{
-    vector<int> input = {1, 2, 3, 4, 5};
-    Tree t(input);
+TEST(SymmetricTreeTest, DifferentDepths) {
+    Tree t;
+    t.root = new Node(1);
+    t.root->left = new Node(2);
+    t.root->left->left = new Node(3);
     EXPECT_FALSE(t.isSymmetric());
 }
 int main(int argc, char *argv[])

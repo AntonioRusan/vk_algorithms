@@ -9,3 +9,4 @@
 build/
 cmake-build-*/
 bin/
+tests
